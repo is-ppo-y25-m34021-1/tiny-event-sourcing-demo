@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import ru.quipy.api.project.ProjectAggregate
+import ru.quipy.api.user.UserAggregate
 import ru.quipy.core.EventSourcingServiceFactory
-import ru.quipy.logic.ProjectAggregateState
+import ru.quipy.logic.project.ProjectAggregateState
+import ru.quipy.logic.user.UserAggregateState
 import ru.quipy.projections.AnnotationBasedProjectEventsSubscriber
 import ru.quipy.streams.AggregateEventStreamManager
 import ru.quipy.streams.AggregateSubscriptionsManager
@@ -55,6 +57,9 @@ class EventSourcingLibConfiguration {
      */
     @Bean
     fun projectEsService() = eventSourcingServiceFactory.create<UUID, ProjectAggregate, ProjectAggregateState>()
+
+    @Bean
+    fun userEsService() = eventSourcingServiceFactory.create<UUID, UserAggregate, UserAggregateState>()
 
     @PostConstruct
     fun init() {

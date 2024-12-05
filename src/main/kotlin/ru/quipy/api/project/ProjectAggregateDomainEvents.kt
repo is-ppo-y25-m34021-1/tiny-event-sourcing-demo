@@ -66,7 +66,6 @@ class CreatedTaskEvent(
     val taskName: String,
     val taskDescription: String,
     val statusName: String,
-    var assigneeUsersId: List<UUID>?,
     createdAt: Long = System.currentTimeMillis()
 ) : Event<ProjectAggregate>(
     name = CREATED_TASK_EVENT,

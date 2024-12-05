@@ -115,8 +115,7 @@ class ProjectAggregateState : AggregateState<UUID, ProjectAggregate> {
             projectId = projectId,
             taskName = task.taskName,
             taskDescription = task.taskDescription,
-            statusName = defaultStatusName,
-            assigneeUsersId = task.assigneeUsersId
+            statusName = defaultStatusName
         )
     }
 
@@ -128,7 +127,7 @@ class ProjectAggregateState : AggregateState<UUID, ProjectAggregate> {
                 taskName = event.taskName,
                 taskDescription = event.taskDescription,
                 statusName = event.statusName,
-                assigneeUsersId = event.assigneeUsersId as MutableList<UUID>?
+                null
             )
         )
     }
@@ -146,7 +145,7 @@ class ProjectAggregateState : AggregateState<UUID, ProjectAggregate> {
 
         return AssignedTaskEvent(
             projectId = assignTaskDto.projectId,
-            taskId = assignTaskDto.projectId,
+            taskId = assignTaskDto.taskId,
             assigneeUserId = assignTaskDto.assigneeUserId,
         )
     }
